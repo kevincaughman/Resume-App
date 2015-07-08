@@ -12,4 +12,5 @@ YouTube Tutorial for developing iOS apps with Parse in Swift 2.0
   
 //My personal pages
   Twitter: https://twitter.com/kevincaughman
+  
   LinkedIn: https://www.linkedin.com/pub/kevin-caughman/63/85a/647
