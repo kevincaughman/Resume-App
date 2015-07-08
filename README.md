@@ -5,7 +5,6 @@ YouTube Tutorial for developing iOS apps with Parse in Swift 2.0
 
 
 //Link to mobile platform used in tutorials:
-
   Parse: https://parse.com/
   
 //Link to my YouTube series:
