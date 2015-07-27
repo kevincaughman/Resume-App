@@ -10,9 +10,9 @@ import UIKit
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
     // textField variables
-    @IBOutlet weak var userName: UITextField!
-    @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet private weak var userName: UITextField!
+    @IBOutlet private weak var password: UITextField!
+    @IBOutlet private weak var errorLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
