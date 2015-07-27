@@ -10,14 +10,14 @@ import UIKit
 
 class SignUpViewController: UIViewController, UITextFieldDelegate, UIAlertViewDelegate {
     // TextField variables
-    @IBOutlet weak var firstName: UITextField!
-    @IBOutlet weak var lastName: UITextField!
-    @IBOutlet weak var userName: UITextField!
-    @IBOutlet weak var userEmail: UITextField!
-    @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var confirmPassword: UITextField!
+    @IBOutlet private weak var firstName: UITextField!
+    @IBOutlet private weak var lastName: UITextField!
+    @IBOutlet private weak var userName: UITextField!
+    @IBOutlet private weak var userEmail: UITextField!
+    @IBOutlet private weak var password: UITextField!
+    @IBOutlet private weak var confirmPassword: UITextField!
     // Label to display an error below textFields
-    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet private weak var errorLabel: UILabel!
     
 
     override func viewDidLoad() {
@@ -62,6 +62,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
+    //Mark: This will take the user straight to the MainViewController since a session is created at signup.
     // creates and returns an alert view to display when signup is successful
     func signUpSeccuessAlert() -> UIAlertController {
         let alertview = UIAlertController(title: "Sign up Successful", message: "Now you can log in for complete access", preferredStyle: .Alert)
@@ -72,5 +73,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
         return alertview
     }
     
+    //Mark: Alternate to above code. This will take the user to the Sign in screen.
+    /*func signUpSeccuessAlert() -> UIAlertController {
+        let alertview = UIAlertController(title: "Sign up Successful", message: "Now you can log in for complete access", preferredStyle: .Alert)
+        alertview.addAction(UIAlertAction(title: "Login", style: .Default, handler: { (alertAction) -> Void in self.dismissViewControllerAnimated(true, completion: nil)
+    }))
+        alertview.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        
+        return alertview
+    }*/
 
 }
