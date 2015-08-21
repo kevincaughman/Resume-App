@@ -8,22 +8,52 @@
 
 class Game {
     
+    //MARK: - Stored Properties
     private var resultText = String()
-    private var appChoiceText = String()
+    private var appChoice = String()
+    private var playerPreviousChoice = ""
     private var winner = String()
-    private var appWins = Int()
-    private var playerWIns = Int()
+    private var choices = (String(), String())
+    private let rpsEngine = RPSEngine()
     
-    private struct RandomNumber {
-        var num = drand48()
+    private var translateChoice: String {
+        get {
+            switch playerPreviousChoice {
+                case "Rock":
+                    return "R"
+                case "Paper":
+                    return "P"
+                case "Scissors":
+                    return "S"
+            default:
+                return playerPreviousChoice
+            }
+        } set {
+            switch newValue {
+                case "R":
+                    appChoice = "Rock"
+                case "P":
+                    appChoice = "Paper"
+                case "S":
+                    appChoice = "Scissors"
+            default:
+                appChoice = "Rock"
+            }
+        }
     }
+
     
-    func getGameWinner(playerChoice: String) -> String {
+    //MARK: - Primary Methods
+    func getGameWinner(playerChoice: String, aiOn: Bool) -> String {
         
-        let appChoice = calculateAppsChoice()
-        let choices = (appChoice, playerChoice)
-        let playerWon = "The appChose \(appChoice),\n You win!"
-        let appWon = "The app chose \(appChoice),\n App wins!"
+        translateChoice = rpsEngine.getMove(translateChoice, aiOn: aiOn)
+
+        choices = (appChoice, playerChoice)
+        
+        playerPreviousChoice = playerChoice
+        
+        let playerWon = "The app chose \(appChoice),\n You win!"
+        let appWon = "The app chose \(appChoice),\n the App wins!"
         
         switch choices {
             case ("Rock", "Paper"):
@@ -52,22 +82,6 @@ class Game {
         return resultText
     }
     
-    func calculateAppsChoice() -> String {
-        let random = RandomNumber()
-        
-        switch random.num {
-            case 0...0.33:
-                appChoiceText = "Rock"
-            case 0.34...0.66:
-                appChoiceText = "Paper"
-            case 0.67...0.99:
-                appChoiceText = "Scissors"
-        default:
-            break
-        }
-        print("\(random.num) = \(appChoiceText)")
-        return appChoiceText
-    }
     
     func addPointToWinner(var app: Int, var player: Int) -> (newAppScore: Int, newPlayerScore: Int) {
         
@@ -82,5 +96,21 @@ class Game {
         return (app, player)
     }
     
+    //    func calculateAppsChoice() -> String {
+    //        let random = RandomNumber()
+    //
+    //        switch random.num {
+    //            case 0...0.33:
+    //                appChoiceText = "Rock"
+    //            case 0.34...0.66:
+    //                appChoiceText = "Paper"
+    //            case 0.67...0.99:
+    //                appChoiceText = "Scissors"
+    //        default:
+    //            break
+    //        }
+    //        print("\(random.num) = \(appChoiceText)")
+    //        return appChoiceText
+    //    }
     
 }

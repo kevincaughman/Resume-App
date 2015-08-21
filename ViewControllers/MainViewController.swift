@@ -11,6 +11,7 @@ import UIKit
 
 class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
 
+    // MARK - IBOutlets
     @IBOutlet private weak var playerChoicetxt: UITextField!
     @IBOutlet private weak var gamePickerView: UIPickerView!
     @IBOutlet private weak var playerWins: UILabel!
@@ -18,22 +19,36 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     @IBOutlet private weak var userNameLabel: UILabel!
     @IBOutlet private weak var gameResultsLabel: UILabel!
     @IBOutlet private weak var playButton: UIButton!
+    @IBOutlet weak var gameAISwitch: UISwitch!
     
+    // MARK: - MainVC Properties
+    let game = Game()
     private let gameChoices = ["Rock", "Paper", "Scissors"]
-    
-    @IBAction func playBtnTouched(sender: UIButton) {
-        
-        let game = Game()
-        gameResultsLabel.text = game.getGameWinner(playerChoicetxt.text!)
-        (getAppScore, getPlayerScore) = game.addPointToWinner(getAppScore, player: getPlayerScore)
+    private var getAppScore: Int {
+        get {
+            return NSNumberFormatter().numberFromString(appWins.text!)!.integerValue
+        }
+        set {
+            appWins.text = "\(newValue)"
+        }
     }
+    private var getPlayerScore: Int {
+        get {
+            return NSNumberFormatter().numberFromString(playerWins.text!)!.integerValue
+        }
+        set {
+            playerWins.text = "\(newValue)"
+        }
+    }
+    
+    //MARK: - Primary View Functions/Actions
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         
         // use PFUser to see if there is a current user signed in
         if PFUser.currentUser() != nil {
-            userNameLabel.text = "Welcome \(PFUser.currentUser()!.username!),"
+            userNameLabel.text = "Welcome \(PFUser.currentUser()!.username!), to my"
             gamePickerView.delegate = self
             playerChoicetxt.delegate = self
         } else {
@@ -43,7 +58,15 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         
     }
     
-    // Log out button
+    @IBAction func playBtnTouched(sender: UIButton) {
+        
+        var gameSwitchPosition: Bool { return gameAISwitch.on }
+        
+        gameResultsLabel.text = game.getGameWinner(playerChoicetxt.text!, aiOn: gameSwitchPosition)
+        
+        (getAppScore, getPlayerScore) = game.addPointToWinner(getAppScore, player: getPlayerScore)
+    }
+    
     @IBAction func logOutUser(sender: UIButton) {
         // log current user out and end session
         PFUser.logOut()
@@ -57,23 +80,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         return false
     }
     
-    private var getAppScore: Int {
-        get {
-            return NSNumberFormatter().numberFromString(appWins.text!)!.integerValue
-        }
-        set {
-            appWins.text = "\(newValue)"
-        }
-    }
-    
-    private var getPlayerScore: Int {
-        get {
-            return NSNumberFormatter().numberFromString(playerWins.text!)!.integerValue
-        }
-        set {
-            playerWins.text = "\(newValue)"
-        }
-    }
+    //MARK: - PickerView Functions
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         playerChoicetxt.text = gameChoices[row]
@@ -92,16 +99,13 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         return gameChoices[row]
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
-    {
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return gameChoices.count
     }
     
-    // returns the number of 'columns' to display.
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int
-    {
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
-
+    
 }
 
