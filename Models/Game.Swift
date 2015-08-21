@@ -1,48 +1,70 @@
 //
 //  Game.swift
-//  Resume
+//  My Resume
 //
-//  Created by Kevin Caughman on 7/25/15.
+//  Created by Kevin Caughman on 7/12/15.
 //  Copyright © 2015 Kevin Caughman. All rights reserved.
 //
 
 class Game {
     
     private var resultText = String()
-    private var appChoiceText = String()
+    private var appChoice = String()
+    private var playerPreviousChoice = ""
     private var winner = String()
-    private var appWins = Int()
-    private var playerWIns = Int()
+    private var choices = (String(), String())
+    private let rpsEngine = RPSEngine()
     
-    private struct RandomNumber {
-        var num = drand48()
+    private var getChoice: String {
+        get {
+            switch playerPreviousChoice {
+                case "Rock":
+                    return "R"
+                case "Paper":
+                    return "P"
+                case "Scissors":
+                    return "S"
+            default:
+                return playerPreviousChoice
+            }
+        } set {
+            switch "\(newValue)" {
+            case "R":
+                appChoice = "Rock"
+            case "P":
+                appChoice = "Paper"
+            case "S":
+                appChoice = "Scissors"
+            default:
+                appChoice = "Rock"
+            }
+        }
     }
     
-    func getGameWinner(playerChoice: String) -> String {
+    func getGameWinner(playerChoice: String, ai: Bool) -> String {
         
-        let appChoice = calculateAppsChoice()
-        let choices = (appChoice, playerChoice)
-        let playerWon = "The appChose \(appChoice),\n You win!"
-        let appWon = "The app chose \(appChoice),\n App wins!"
+        getChoice = rpsEngine.getMove(getChoice, aiOn: ai)
+        choices = (appChoice, playerChoice)
+        playerPreviousChoice = playerChoice
         
         switch choices {
             case ("Rock", "Paper"):
-                resultText = playerWon
+                resultText = "The app chose \(appChoice),\n You win!"
                 winner = "player"
             case ("Rock", "Scissors"):
-                resultText = appWon
+                resultText = "The app chose \(appChoice),\n The app wins!"
                 winner = "app"
             case ("Paper", "Rock"):
-                resultText = appWon
+                resultText = "The app chose \(appChoice),\n The app wins!"
                 winner = "app"
             case ("Paper", "Scissors"):
-                resultText = playerWon
+                resultText = "The app chose \(appChoice),\n You win!"
                 winner = "player"
             case ("Scissors", "Rock"):
-                resultText = playerWon
+                resultText = "The app chose \(appChoice),\n You win!"
                 winner = "player"
             case ("Scissors", "Paper"):
-                resultText = appWon
+                resultText = "The app chose \(appChoice),\n The app wins!"
                 winner = "app"
         default:
             resultText = "The app chose \(appChoice),\n It's a tie!"
@@ -50,23 +72,6 @@ class Game {
         }
         print("winner = \(winner)")
         return resultText
-    }
-    
-    func calculateAppsChoice() -> String {
-        let random = RandomNumber()
-        
-        switch random.num {
-            case 0...0.33:
-                appChoiceText = "Rock"
-            case 0.34...0.66:
-                appChoiceText = "Paper"
-            case 0.67...0.99:
-                appChoiceText = "Scissors"
-        default:
-            break
-        }
-        print("\(random.num) = \(appChoiceText)")
-        return appChoiceText
     }
     
     func addPointToWinner(var app: Int, var player: Int) -> (newAppScore: Int, newPlayerScore: Int) {
@@ -81,6 +86,5 @@ class Game {
         }
         return (app, player)
     }
-    
-    
+
 }
