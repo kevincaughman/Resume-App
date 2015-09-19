@@ -112,7 +112,12 @@ class SignUp: NSObject {
         user.password = password!
         
         // call user with Parse's signUp method to store records in the User table
-        user.signUp()
+        do {
+            try user.signUp()
+        } catch let error as NSError {
+            print("Error: \(error.localizedDescription)")
+            abort()
+        }
         
         // use isNew method to make sure signUp is successful.
         success = user.isNew
