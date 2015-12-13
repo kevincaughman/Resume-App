@@ -14,9 +14,6 @@
 		0A1377631B25198300FE64AB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A1377611B25198300FE64AB /* LaunchScreen.xib */; };
 		0A13776F1B25198300FE64AB /* ResumeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A13776E1B25198300FE64AB /* ResumeTests.swift */; };
 		0A1BDC6F1B48C9C400C034AE /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BDC6E1B48C9C400C034AE /* SignIn.swift */; };
-		0A20E98D1B3FB20300F87623 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A20E98C1B3FB20300F87623 /* Parse.framework */; };
-		0A20E98F1B3FB21100F87623 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A20E98E1B3FB21100F87623 /* Bolts.framework */; };
-		0A20E9911B3FB21D00F87623 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A20E9901B3FB21D00F87623 /* ParseUI.framework */; };
 		0A20E9931B3FB2B900F87623 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A20E9921B3FB2B900F87623 /* AudioToolbox.framework */; };
 		0A20E9951B3FB2C300F87623 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A20E9941B3FB2C300F87623 /* CFNetwork.framework */; };
 		0A20E9971B3FB2CC00F87623 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A20E9961B3FB2CC00F87623 /* CoreGraphics.framework */; };
@@ -27,8 +24,10 @@
 		0A20E9A11B3FB2FF00F87623 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A20E9A01B3FB2FF00F87623 /* StoreKit.framework */; };
 		0A20E9A31B3FB30A00F87623 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A20E9A21B3FB30A00F87623 /* SystemConfiguration.framework */; };
 		0A20E9A51B3FB46C00F87623 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A20E9A41B3FB46C00F87623 /* Social.framework */; };
-		0A20E9A91B3FB6B800F87623 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A20E9A81B3FB6B800F87623 /* libsqlite3.tbd */; };
 		0A26BE551C1DD1E0007A3F9B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A26BE541C1DD1E0007A3F9B /* Extensions.swift */; };
+		0A2C69761C1DE40800457B9C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2C69751C1DE40800457B9C /* libsqlite3.tbd */; };
+		0A2C697E1C1DFEF100457B9C /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2C697D1C1DFEF100457B9C /* Bolts.framework */; };
+		0A2C69801C1DFEFC00457B9C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2C697F1C1DFEFC00457B9C /* Parse.framework */; };
 		0A45C6A11B42131200A582ED /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A20E9A61B3FB47900F87623 /* Accounts.framework */; };
 		0AD66E5B1B6471EA00F8D365 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD66E5A1B6471EA00F8D365 /* Game.swift */; };
 		0AEEDFD61B3A2D8B00DD3753 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEEDFD51B3A2D8B00DD3753 /* SignInViewController.swift */; };
@@ -73,9 +72,6 @@
 		0A13776D1B25198300FE64AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A13776E1B25198300FE64AB /* ResumeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeTests.swift; sourceTree = "<group>"; };
 		0A1BDC6E1B48C9C400C034AE /* SignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
-		0A20E98C1B3FB20300F87623 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		0A20E98E1B3FB21100F87623 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		0A20E9901B3FB21D00F87623 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		0A20E9921B3FB2B900F87623 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0A20E9941B3FB2C300F87623 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0A20E9961B3FB2CC00F87623 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -87,8 +83,10 @@
 		0A20E9A21B3FB30A00F87623 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0A20E9A41B3FB46C00F87623 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		0A20E9A61B3FB47900F87623 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		0A20E9A81B3FB6B800F87623 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		0A26BE541C1DD1E0007A3F9B /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		0A2C69751C1DE40800457B9C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		0A2C697D1C1DFEF100457B9C /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Resume/Bolts.framework; sourceTree = "<group>"; };
+		0A2C697F1C1DFEFC00457B9C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Resume/Parse.framework; sourceTree = "<group>"; };
 		0AD66E5A1B6471EA00F8D365 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		0AEEDFD01B3A2A1A00DD3753 /* Resume-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Resume-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		0AEEDFD51B3A2D8B00DD3753 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -103,21 +101,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A2C69761C1DE40800457B9C /* libsqlite3.tbd in Frameworks */,
 				0A45C6A11B42131200A582ED /* Accounts.framework in Frameworks */,
-				0A20E9A91B3FB6B800F87623 /* libsqlite3.tbd in Frameworks */,
 				0A20E9A51B3FB46C00F87623 /* Social.framework in Frameworks */,
 				0A20E9A31B3FB30A00F87623 /* SystemConfiguration.framework in Frameworks */,
 				0A20E9A11B3FB2FF00F87623 /* StoreKit.framework in Frameworks */,
 				0A20E99F1B3FB2F400F87623 /* Security.framework in Frameworks */,
 				0A20E99D1B3FB2EB00F87623 /* QuartzCore.framework in Frameworks */,
+				0A2C697E1C1DFEF100457B9C /* Bolts.framework in Frameworks */,
 				0A20E99B1B3FB2E200F87623 /* MobileCoreServices.framework in Frameworks */,
 				0A20E9991B3FB2D600F87623 /* CoreLocation.framework in Frameworks */,
+				0A2C69801C1DFEFC00457B9C /* Parse.framework in Frameworks */,
 				0A20E9971B3FB2CC00F87623 /* CoreGraphics.framework in Frameworks */,
 				0A20E9951B3FB2C300F87623 /* CFNetwork.framework in Frameworks */,
 				0A20E9931B3FB2B900F87623 /* AudioToolbox.framework in Frameworks */,
-				0A20E9911B3FB21D00F87623 /* ParseUI.framework in Frameworks */,
-				0A20E98D1B3FB20300F87623 /* Parse.framework in Frameworks */,
-				0A20E98F1B3FB21100F87623 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,7 +191,9 @@
 		0A1377781B2519A700FE64AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0A20E9A81B3FB6B800F87623 /* libsqlite3.tbd */,
+				0A2C697F1C1DFEFC00457B9C /* Parse.framework */,
+				0A2C697D1C1DFEF100457B9C /* Bolts.framework */,
+				0A2C69751C1DE40800457B9C /* libsqlite3.tbd */,
 				0A20E9A61B3FB47900F87623 /* Accounts.framework */,
 				0A20E9A41B3FB46C00F87623 /* Social.framework */,
 				0A20E9A21B3FB30A00F87623 /* SystemConfiguration.framework */,
@@ -206,9 +205,6 @@
 				0A20E9961B3FB2CC00F87623 /* CoreGraphics.framework */,
 				0A20E9941B3FB2C300F87623 /* CFNetwork.framework */,
 				0A20E9921B3FB2B900F87623 /* AudioToolbox.framework */,
-				0A20E9901B3FB21D00F87623 /* ParseUI.framework */,
-				0A20E98E1B3FB21100F87623 /* Bolts.framework */,
-				0A20E98C1B3FB20300F87623 /* Parse.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -497,7 +493,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = $SRCROOT;
+				FRAMEWORK_SEARCH_PATHS = (
+					$SRCROOT,
+					"$(PROJECT_DIR)/Resume",
+				);
 				INFOPLIST_FILE = Resume/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.KevinCaughman.$(PRODUCT_NAME:rfc1034identifier)";
@@ -514,7 +513,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = $SRCROOT;
+				FRAMEWORK_SEARCH_PATHS = (
+					$SRCROOT,
+					"$(PROJECT_DIR)/Resume",
+				);
 				INFOPLIST_FILE = Resume/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.KevinCaughman.$(PRODUCT_NAME:rfc1034identifier)";
