@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Notification - Resume WatchKit 1 App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Resume WatchKit 1 App copy 2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>Resume WatchKit 1 App copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>Resume WatchKit 1 App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Resume.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>0A1377521B25198300FE64AB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0A1377671B25198300FE64AB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0A18A8EA1B404FF000B19E04</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0A26BE561C1DD291007A3F9B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0A26BE5D1C1DD296007A3F9B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
