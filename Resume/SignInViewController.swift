@@ -26,13 +26,18 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     // Sign In button
     @IBAction func signInTouched(sender: UIButton) {
         
-        ///////////////////////// Video v7.1 Login Async ///////////////
-            activityIndicator.startAnimating()
-            activityLabel.text = "Logging In Now..."
+        ///////////////////////// Video V8 Login Async ///////////////
+        if SignIn.hasEmptyFields(userName.text!, password: password.text!) {
+            self.errorLabel.text = Error.IncorrectSignIn.description
+            return
+        }
+        
+        activityIndicator.startAnimating()
+        activityLabel.text = "Logging In Now..."
         
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0))
             {
-                ParseModel().loginUserAsync(self.userName.text!, password: self.password.text!, completion:
+                SignIn.loginUserAsync(self.userName.text!, password: self.password.text!, completion:
                     { (success: Bool) -> Void in
                         //update UI
                         if success
