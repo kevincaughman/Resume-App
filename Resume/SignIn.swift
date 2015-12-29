@@ -6,6 +6,8 @@
 //  Copyright © 2015 Kevin Caughman. All rights reserved.
 //
 
+typealias userHandler = (user: PFUser?, error: NSError?)
+
 class SignIn {
     
     // declare variables as optional Strings, optional means String may return nil.
@@ -38,9 +40,28 @@ class SignIn {
         }
         return false
     }
+    
+    ////////// Video V8 Method ///////////////////
+
     // use logInWithUsername method to log in
+    func loginUserAsync(email: String, password: String, completion:(success:Bool) -> Void)
+    {
+        PFUser.logInWithUsernameInBackground(email, password: password)
+            { (user: PFUser?, error: NSError?) -> Void in
+                
+                if error == nil {
+                    completion(success: true)
+                }
+                else {
+                    completion(success: false)
+                }
+        }
+    }
+    
+    /////////// end method ////////////////////
+    
     func checkUserCredentials() -> Bool {
-        PFUser.logInWithUsername(userName!, password: password!)
+        try! PFUser.logInWithUsername(userName!, password: password!)
         // if log in is successful currentUser will be set and not nil
         if (PFUser.currentUser() != nil) {
             return true

@@ -9,7 +9,7 @@
 import UIKit
 
 
-class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
+class HomeViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
 
     // MARK - IBOutlets
     @IBOutlet private weak var playerChoicetxt: UITextField!
@@ -47,15 +47,14 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         super.viewDidAppear(true)
         
         // use PFUser to see if there is a current user signed in
-        if PFUser.currentUser() != nil {
-            userNameLabel.text = "Welcome \(PFUser.currentUser()!.username!), to my"
-            gamePickerView.delegate = self
-            playerChoicetxt.delegate = self
-        } else {
+        if PFUser.currentUser() == nil {
             // take user to SignInViewController through a custom segue
             self.performSegueWithIdentifier("goSignIn", sender: self)
         }
         
+        userNameLabel.text = "Welcome \(PFUser.currentUser()!.username!), to my"
+        gamePickerView.delegate = self
+        playerChoicetxt.delegate = self
     }
     
     @IBAction func playBtnTouched(sender: UIButton) {

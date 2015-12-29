@@ -26,56 +26,32 @@ class SignUp: NSObject {
         self.password = pass
         self.confirmPassword = confirmPass
     }
-    
-    // this will call each function below checking for errors during sign up and return true if all of our error checks return true or throws a specific error based on the specific function.
-    func signUpUser() throws -> Bool {
+
+    func checkAllRequirements() throws {
         
-        // when using throws above you will write guard the function name then else with an error that is thrown if your function returns false. Each error below is called from our Enums model.
-        guard hasEmptyFields() else {
-            throw Error.EmptyField 
-        }
+        // Check to make sure none of the text fields on our sign up view are empty //
         
-        guard isValidEmail() else {
-            throw Error.InvalidEmail
+        if firstName!.isEmpty && lastName!.isEmpty && userName!.isEmpty && userEmail!.isEmpty && password!.isEmpty && confirmPassword!.isEmpty {
+            throw Error.EmptyField
         }
         
-        guard validatePasswordsMatch() else {
-            throw Error.PasswordsDoNotMatch
-        }
-        
-        guard checkPasswordSufficientComplexity() else {
-            throw Error.InvalidPassword
-        }
-        
-        guard storeSuccessfulSignUp() else {
-            throw Error.UserNameTaken
-        }
-        return true
-    }
-    // Check to make sure none of the text fields on our sign up view are empty
-    func hasEmptyFields() -> Bool {
-        if !firstName!.isEmpty && !lastName!.isEmpty && !userName!.isEmpty && !userEmail!.isEmpty && !password!.isEmpty && !confirmPassword!.isEmpty {
-            return true
-        }
-        return false
-    }
-    // Check for a valid email using a regular expression
-    func isValidEmail() -> Bool {
+        // Check for a valid email using a regular expression //
         
         let emailEX = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
         let range = userEmail!.rangeOfString(emailEX, options:.RegularExpressionSearch)
         let result = range != nil ? true : false
-        return result
-    }
-    // Check to make sure both password entries are the same
-    func validatePasswordsMatch() -> Bool {
-        if(password! == confirmPassword!) {
-            return true
+        
+        if result == false {
+            throw Error.InvalidEmail
         }
-        return false
-    }
-    // Check for three password requirements
-    func checkPasswordSufficientComplexity() -> Bool {
+        
+        // Check to make sure both password entries are the same //
+        
+        if(password! != confirmPassword!) {
+            throw Error.PasswordsDoNotMatch
+        }
+        
+        // Check for three password requirements //
         
         // check for capital letter
         let capitalLetterRegEx = ".*[A-Z]+.*"
@@ -93,34 +69,30 @@ class SignUp: NSObject {
         let lengthResult = password!.characters.count >= 8
         print("Passed length: \(lengthResult)")
         
-        return capitalResult && numberResult && lengthResult
-        
+        if !capitalResult && !numberResult && !lengthResult {
+            throw Error.InvalidPassword
+        }
     }
     // store user in Parse database and create session as current user
-    func storeSuccessfulSignUp() -> Bool {
+    func saveUserAsync(completion:(result: PFUser?, success: Bool) -> Void)
+    {
+        let user = PFUser()     // initialize variable as PFUser
         
-        // declare variable for our boolean result
-        var success = false
-        // initialize variable as PFUser
-        let user = PFUser()
+        user["FirstName"] = firstName!       //**
+        user["LastName"] = lastName!        // user will take each field and add them to your object
+        user.username = userName!          // Use PFUser pre made fields username, email, or password.
+        user.email = userEmail!           // To create a custom field name use [""] to decalre the name.
+        user.password = password!        //**
         
-        /* assign columns by calling user and use PFUser pre made fields username, email, or password. To create a custom field name use [""] to decalre the name. Then assign the variables that will be stored under that field */
-        user["FirstName"] = firstName!
-        user["LastName"] = lastName!
-        user.username = userName!
-        user.email = userEmail!
-        user.password = password!
-        
-        // call user with Parse's signUp method to store records in the User table
-        user.signUp()
-        
-        // use isNew method to make sure signUp is successful.
-        success = user.isNew
-        
-        return success
+        user.signUpInBackgroundWithBlock({(success: Bool, error: NSError?) -> Void in
+            
+            if success {
+                completion(result: PFUser.currentUser()!, success: true)
+            } else {
+                completion(result: nil, success: false)
+            }
+        })
     
     }
-    
-    
-    
+
 }

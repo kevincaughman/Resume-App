@@ -29,7 +29,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
         userEmail.delegate = self
         password.delegate = self
         confirmPassword.delegate = self
-    
     }
 
     // SignUp button
@@ -37,34 +36,39 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
         // Clear label each time the button is clicked to clear previous errors.
         errorLabel.text = ""
         
-        // Initialize SignUp Model and pass in variables
         let signup = SignUp(fName: firstName.text!, lName: lastName.text!, uName: userName.text!, email: userEmail.text!, pass: password.text!, confirmPass: confirmPassword.text!)
         
-        // perform try catch below to sign up user
-        do {
-            // call signUp model function SignUpUser()
-            // anything under this try will execute if signUpUser returns true
-            try signup.signUpUser()
-            
-            // Display an alert view showing successful signup
-            let alert = signUpSeccuessAlert()
-            presentViewController(alert, animated: true, completion: nil)
-            
-           // catches the error thrown by SignUpUser() if there is one
-        } catch let error as Error {
-            errorLabel.text = error.description
-        } catch { errorLabel.text = "Sorry something went wrong please try again"
-            
-        }
+        //////// Async Sign Up function ///////////
         
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0))
+        {
+            do {
+                try signup.checkAllRequirements()
+                
+                signup.saveUserAsync({ (result, success) -> Void in
+                    if success {
+                        let alert = self.signUpSeccuessAlert()
+                        self.presentViewController(alert, animated: true, completion: nil)
+                    }
+                })
+                
+            } catch let error as Error {
+                dispatch_async(dispatch_get_main_queue()) { self.errorLabel.text = error.description }
+            } catch {
+                dispatch_async(dispatch_get_main_queue()) { self.errorLabel.text = "Sorry something went wrong please try again" }
+            }
+        }
+        ////// End Async //////////
     }
+    
     // dismiss keyboard if user touches the background area
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
     // creates and returns an alert view to display when signup is successful
     func signUpSeccuessAlert() -> UIAlertController {
-        let alertview = UIAlertController(title: "Sign up Successful", message: "Now you can log in for complete access", preferredStyle: .Alert)
+        let alertview = UIAlertController(title: "Sign Up Successful", message: "Now you can Login for complete access", preferredStyle: .Alert)
         alertview.addAction(UIAlertAction(title: "Login", style: .Default, handler: { (alertAction) -> Void in self.dismissViewControllerAnimated(true, completion: nil)
     }))
         alertview.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
