@@ -47,8 +47,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
                 
                 signup.saveUserAsync({ (result, success) -> Void in
                     if success {
-                        let alert = self.signUpSeccuessAlert()
-                        self.presentViewController(alert, animated: true, completion: nil)
+                        self.showSuccessAlert()
                     }
                 })
                 
@@ -66,14 +65,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIAlertViewDe
         self.view.endEditing(true)
     }
     
-    // creates and returns an alert view to display when signup is successful
-    func signUpSeccuessAlert() -> UIAlertController {
+    // creates and shows an alert view to display when signup is successful
+    func showSuccessAlert() {
         let alertview = UIAlertController(title: "Sign Up Successful", message: "Now you can Login for complete access", preferredStyle: .Alert)
-        alertview.addAction(UIAlertAction(title: "Login", style: .Default, handler: { (alertAction) -> Void in self.dismissViewControllerAnimated(true, completion: nil)
-    }))
+        alertview.addAction(UIAlertAction(title: "Login", style: .Default, handler:
+            { (alertAction) -> Void in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }))
         alertview.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         
-        return alertview
+        self.presentViewController(alertview, animated: true, completion: nil)
     }
     
     @IBAction func alreadyAUserBtnTouched(sender: UIButton) {

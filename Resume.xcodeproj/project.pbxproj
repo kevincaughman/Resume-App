@@ -37,6 +37,7 @@
 		0AEEDFDA1B3A424400DD3753 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEEDFD91B3A424400DD3753 /* SignUp.swift */; };
 		0AEEDFDC1B3A4B5400DD3753 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEEDFDB1B3A4B5400DD3753 /* Enums.swift */; };
 		0AF15A6E1B87AAA600650FF2 /* RPSEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF15A6D1B87AAA600650FF2 /* RPSEngine.swift */; };
+		0AF32AC31C3381650006DB68 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF32AC21C3381650006DB68 /* libz.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		0AEEDFD91B3A424400DD3753 /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		0AEEDFDB1B3A4B5400DD3753 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		0AF15A6D1B87AAA600650FF2 /* RPSEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPSEngine.swift; sourceTree = "<group>"; };
+		0AF32AC21C3381650006DB68 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AF32AC31C3381650006DB68 /* libz.tbd in Frameworks */,
 				0A2C69761C1DE40800457B9C /* libsqlite3.tbd in Frameworks */,
 				0A45C6A11B42131200A582ED /* Accounts.framework in Frameworks */,
 				0A20E9A51B3FB46C00F87623 /* Social.framework in Frameworks */,
@@ -195,6 +198,7 @@
 		0A1377781B2519A700FE64AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0AF32AC21C3381650006DB68 /* libz.tbd */,
 				0A2C697F1C1DFEFC00457B9C /* Parse.framework */,
 				0A2C697D1C1DFEF100457B9C /* Bolts.framework */,
 				0A2C69751C1DE40800457B9C /* libsqlite3.tbd */,
@@ -500,6 +504,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					$SRCROOT,
@@ -509,6 +514,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.KevinCaughman.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Kevin/Developer/Xcode/Resume/Resume-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -520,6 +526,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					$SRCROOT,
@@ -529,6 +536,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.KevinCaughman.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Kevin/Developer/Xcode/Resume/Resume-Bridging-Header.h";
 			};
 			name = Release;
